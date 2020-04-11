@@ -1,4 +1,4 @@
-classdef RGBPoint
+classdef RGBPoint < Point
     %UNTITLED Summary of this class goes here
     %   Detailed explanation goes here
     
@@ -6,18 +6,19 @@ classdef RGBPoint
         r double {mustBeReal, mustBeFinite}
         g double {mustBeReal, mustBeFinite}
         b double {mustBeReal, mustBeFinite}
-        x {mustBeInteger}
-        y {mustBeInteger}
     end
     
     methods
         function obj = RGBPoint(new_r, new_g, new_b, new_x, new_y)
             %Construct an instance of this class
+            obj@Point( new_x, new_y);
             obj.r = new_r;
             obj.g = new_g;
             obj.b = new_b;
-            obj.x = new_x;
-            obj.y = new_y;
+        end
+        
+        function dis = RGB_distance( self, other )
+            dis = sqrt((self.getr() - other.getr())^2 + (self.getg() - other.getg())^2 + (self.getb() - other.getb())^2);
         end
         
         function num = getr(self)
@@ -35,15 +36,6 @@ classdef RGBPoint
             num = self.b;
         end
         
-        function num = getx(self)
-            %Returns the x coordinate value of the point
-            num = self.x;
-        end
-        
-        function num = gety(self)
-            %Returns the y coordinate value of the point
-            num = self.y;
-        end
     end %End of methods
 end
 
