@@ -11,6 +11,13 @@ classdef RGBPoint < Point
     methods
         function obj = RGBPoint(new_r, new_g, new_b, new_x, new_y)
             %Construct an instance of this class
+            if nargin == 0
+               new_r = 0;
+               new_g = 0;
+               new_b = 0;
+               new_x = 0;
+               new_y = 0;
+            end
             obj@Point( new_x, new_y);
             obj.r = new_r;
             obj.g = new_g;
