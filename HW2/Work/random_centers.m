@@ -4,8 +4,8 @@ function center_mat = random_centers(image, k)
 %Image in the form of x * y * RGB -> double[0,1]
 center_mat(k) = Point(1, 1); %Preallocate k occurences in the center_mat matrix
 for i = 1:k
-    x = randi( size( image, 1) );
-    y = randi( size( image, 2) );
+    y = randi( size( image, 1) );
+    x = randi( size( image, 2) );
     center_mat(i) = Point( x, y );
 end
 
