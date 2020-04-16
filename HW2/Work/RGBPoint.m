@@ -51,6 +51,11 @@ classdef RGBPoint
             obj = self;
         end
             
+        function obj = set_black(self)
+           self.store = bitand( self.store, 0xFF000000 );
+           obj = self;
+        end
+        
         function num = getcluster(self)
             %Returns the cluster this point belongs to, 0 if none.
             num = double( bitshift( bitand(self.store,0xFF000000), -24) );
@@ -86,6 +91,10 @@ classdef RGBPoint
                 end
             end
             obj = self.set_cluster( index );
+        end
+        
+        function pnt = to_full_point(self, x, y)
+            pnt = FullPoint( self.getr(), self.getg(), self.getb(), x, y);
         end
         
         function show( self )
