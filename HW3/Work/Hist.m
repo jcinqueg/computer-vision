@@ -39,7 +39,7 @@ classdef Hist
         function num = HistDistance(self, other)
             %Calculates the Euclidean distance between two histograms. Make sure
             %they were initialized with the same number of bins.
-            num = sqrt( sum( (self.counts - other.counts).^2, 'all' ) );
+            num = sqrt( sum( (double(self.counts) - double(other.counts)).^2, 'all' ) );
         end
     end
 end
